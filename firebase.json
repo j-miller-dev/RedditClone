@@ -2,16 +2,14 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "default",
+      "codebase": "reddit-clone",
       "ignore": [
         "node_modules",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
+      "predeploy": []
     }
   ]
 }

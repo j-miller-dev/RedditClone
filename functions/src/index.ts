@@ -1,8 +1,8 @@
 import * as functions from "firebase-functions";
-import { initializeApp, firestore } from "firebase-admin";
+import * as admin from "firebase-admin";
 
-initializeApp();
-const db = firestore();
+admin.initializeApp();
+const db = admin.firestore();
 
 export const createUserDocument = functions.auth
   .user()
