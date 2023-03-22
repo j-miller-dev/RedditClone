@@ -1,4 +1,5 @@
 import react from "react";
+import { useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { GetServerSidePropsContext } from "next";
 import { Community } from "@/src/atoms/communitiesAtom";
