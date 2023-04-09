@@ -55,12 +55,14 @@ const useCommunityData = () => {
         collection(firestore, `users/${user?.uid}/communitySnippets`)
       );
       const snippets = snippetDocs.docs.map((doc) => ({ ...doc.data() }));
+
       setCommunityStateValue((prev) => ({
         ...prev,
         mySnippets: snippets as CommunitySnippet[],
+        snippetsFetched: true,
       }));
 
-      console.log("here are snippets", snippets);
+      setLoading(false);
     } catch (error: any) {
       console.log("getMySnippets error", error);
       setError(error.message);
@@ -78,6 +80,7 @@ const useCommunityData = () => {
       const newSnippet: CommunitySnippet = {
         communityId: communityData.id,
         imageURL: communityData.imageURL || "",
+        isModerator: user?.uid === communityData.creatorId,
       };
 
       batch.set(
@@ -156,6 +159,7 @@ const useCommunityData = () => {
       setCommunityStateValue((prev) => ({
         ...prev,
         mySnippets: [],
+        snippetsFetched: false,
       }));
       return;
     }
@@ -169,6 +173,8 @@ const useCommunityData = () => {
       getCommunityData(communityId as string);
     }
   }, [router.query, communityStateValue.currentCommunity]);
+
+  // console.log("HERE IS STUFF", communityStateValue);
 
   return {
     // data and functions

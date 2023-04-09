@@ -5,22 +5,33 @@ import Link from "next/link";
 import { BsLink45Deg } from "react-icons/bs";
 import { FaReddit } from "react-icons/fa";
 import { IoImageOutline } from "react-icons/io5";
+import { authModalState } from "@/src/atoms/authModalAtom";
+import { auth } from "@/src/firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useSetRecoilState } from "recoil";
+import useDirectory from "@/src/hooks/useDirectory";
 
-type CreatePostProps = {};
-
-const CreatePostLink: React.FC<CreatePostProps> = () => {
+const CreatePostLink: React.FC = () => {
   const router = useRouter();
-  // const { toggleMenuOpen } = useDirectory();
+  const [user] = useAuthState(auth);
+  const setAuthModalState = useSetRecoilState(authModalState);
+  const { toggleMenuOpen } = useDirectory();
+
   const onClick = () => {
-    // Could check for user to open auth modal before redirecting to submit
-    const { community } = router.query;
-    if (community) {
-      router.push(`/r/${router.query.community}/submit`);
+    if (!user) {
+      setAuthModalState({ open: true, view: "login" });
       return;
     }
-    // Open directory menu to select community to post to
-    // toggleMenuOpen();
+    const { communityId } = router.query;
+
+    if (communityId) {
+      router.push(`/r/${communityId}/submit`);
+      return;
+    }
+    // open our directory menu
+    toggleMenuOpen();
   };
+
   return (
     <Flex
       justify="space-evenly"
