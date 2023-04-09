@@ -41,7 +41,7 @@ const Comments: React.FC<CommentsProps> = ({
   const [comments, setComments] = useState<Comment[]>([]);
   const [fetchLoading, setFetchLoading] = useState(true);
   const [createLoading, setCreateLoading] = useState(false);
-  const [loadingDeleteId, setLoadingDeleteId] = useState("");
+  const [loadingDeleteId, setLoadingDeleteId] = useState<Boolean[]>([]);
   const setPostState = useSetRecoilState(postState);
 
   const onCreateComment = async () => {
