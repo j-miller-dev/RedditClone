@@ -27,7 +27,7 @@ import CommentInput from "./CommentInput";
 import CommentItem, { Comment } from "./CommentItem";
 
 type CommentsProps = {
-  user?: User | undefined | null;
+  user: User;
   selectedPost: Post | null;
   communityId: string;
 };
@@ -199,7 +199,7 @@ const Comments: React.FC<CommentsProps> = ({
                     comment={comment}
                     onDeleteComment={onDeleteComment}
                     loadingDelete={loadingDeleteId === comment.id}
-                    userId={user.uid}
+                    userId={user!.uid}
                   />
                 ))}
               </>
