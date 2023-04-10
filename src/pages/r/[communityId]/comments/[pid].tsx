@@ -6,13 +6,18 @@ import PostItem from "@/src/components/Posts/PostItem";
 import { auth, firestore } from "@/src/firebase/clientApp";
 import useCommunityData from "@/src/hooks/useCommunityData";
 import usePosts from "@/src/hooks/usePosts";
+import { User } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const PostPage: React.FC = () => {
-  const [user] = useAuthState(auth);
+type PostPageProps = {
+  user?: User;
+};
+
+const PostPage: React.FC<PostPageProps> = ({ user }) => {
+  // const [user] = useAuthState(auth);
   const { postStateValue, setPostStateValue, onDeletePost, onVote } =
     usePosts();
   const router = useRouter();
