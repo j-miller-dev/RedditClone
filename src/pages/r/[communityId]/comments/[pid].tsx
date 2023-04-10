@@ -13,7 +13,7 @@ import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 type PostPageProps = {
-  user?: User;
+  user?: User | undefined | null;
 };
 
 const PostPage: React.FC<PostPageProps> = ({ user }) => {
