@@ -27,11 +27,17 @@ import {
 } from "react-icons/io5";
 
 type PostItemProps = {
-  event: React.MouseEvent<SVGElement, MouseEvent>;
+  event?: React.MouseEvent<SVGElement, MouseEvent>;
   post: Post;
   userIsCreator: boolean;
   userVoteValue?: number;
-  onVote: (post: Post, vote: number, communityId: string) => void;
+  onVote: (
+    event: React.MouseEvent<SVGElement, MouseEvent>,
+    post: Post,
+    vote: number,
+    communityId: string,
+    postIdx?: number
+  ) => void;
   onDeletePost: (post: Post) => Promise<boolean>;
   onSelectPost?: (post: Post) => void;
   homePage?: boolean;

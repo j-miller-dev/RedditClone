@@ -25,12 +25,14 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
   } = usePosts();
 
   const getPosts = async () => {
+    console.log("We ARE GETTIING POSTSS!");
+
+    setLoading(true);
     try {
-      setLoading(true);
       // get posts for this community
       const postsQuery = query(
         collection(firestore, "posts"),
-        where("communityId", "==", communityData.id),
+        where("communityId", "==", communityData?.id),
         orderBy("createdAt", "desc")
       );
       const postDocs = await getDocs(postsQuery);
@@ -41,8 +43,6 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
         ...prev,
         posts: posts as Post[],
       }));
-
-      console.log("posts", posts);
     } catch (error: any) {
       console.log("getPosts error", error.message);
     }
@@ -51,6 +51,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
 
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [communityData]);
 
   return (
@@ -60,7 +61,6 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
       ) : (
         <Stack>
           {postStateValue.posts.map((item) => (
-            // eslint-disable-next-line react/jsx-key
             <PostItem
               key={item.id}
               post={item}
