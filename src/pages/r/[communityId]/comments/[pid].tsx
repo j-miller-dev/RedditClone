@@ -56,7 +56,7 @@ const PostPage: React.FC = () => {
           />
         )}
         <Comments
-          user={user as User}
+          user={user}
           selectedPost={postStateValue.selectedPost}
           communityId={postStateValue.selectedPost?.communityId as string}
         />
