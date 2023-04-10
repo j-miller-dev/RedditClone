@@ -27,7 +27,7 @@ import CommentInput from "./CommentInput";
 import CommentItem, { Comment } from "./CommentItem";
 
 type CommentsProps = {
-  user: User;
+  user?: User | undefined | null;
   selectedPost: Post | null;
   communityId: string;
 };
@@ -54,8 +54,8 @@ const Comments: React.FC<CommentsProps> = ({
 
       const newComment: Comment = {
         id: commentDocRef.id,
-        creatorId: user.uid,
-        creatorDisplayText: user.email!.split("@")[0],
+        creatorId: user!.uid,
+        creatorDisplayText: user!.email!.split("@")[0],
         communityId,
         postId: selectedPost?.id!,
         postTitle: selectedPost?.title!,

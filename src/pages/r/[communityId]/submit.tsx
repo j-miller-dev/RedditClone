@@ -25,10 +25,10 @@ const SubmitPostPage: React.FC = () => {
           <NewPostForm
             user={user}
             communityImageURL={communityStateValue.currentCommunity?.imageURL}
-            textInputs={communityStateValue.currentCommunity}
+            textInputs={textInputs}
             onChange={() => {}}
-            handleCreatePost={}
-            loading={}
+            handleCreatePost={handleCreatePost}
+            loading={loading}
           />
         )}
       </>
