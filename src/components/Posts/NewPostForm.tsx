@@ -145,7 +145,8 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
     <Flex direction="column" bg="white" borderRadius={4} mt={2}>
       <Flex width="100%">
         {formTabs.map((item) => (
-          <TabItem
+          <TabItemComponent
+            title={item.title}
             key={item.title}
             item={item}
             selected={item.title === selectedTab}
