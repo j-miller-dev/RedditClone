@@ -91,7 +91,7 @@ const Comments: React.FC<CommentsProps> = ({
   };
 
   const onDeleteComment = async (comment: Comment) => {
-    setLoadingDeleteId(comment.id as string);
+    setLoadingDeleteId(comment.id);
     try {
       const batch = writeBatch(firestore);
       // delete a comment document
@@ -119,7 +119,7 @@ const Comments: React.FC<CommentsProps> = ({
     } catch (error) {
       console.log("onDeleteComment error", error);
     }
-    setLoadingDeleteId(false);
+    setLoadingDeleteId("");
   };
 
   const getPostComments = async () => {
