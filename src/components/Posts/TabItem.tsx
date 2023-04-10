@@ -36,4 +36,4 @@ const TabItem: React.FC<TabItemProps> = ({
     </Flex>
   );
 };
-export default TabItem;
+export default TabItemComponent;
