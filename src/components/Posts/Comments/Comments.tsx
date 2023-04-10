@@ -41,7 +41,7 @@ const Comments: React.FC<CommentsProps> = ({
   const [comments, setComments] = useState<Comment[]>([]);
   const [fetchLoading, setFetchLoading] = useState(true);
   const [createLoading, setCreateLoading] = useState(false);
-  const [loadingDeleteId, setLoadingDeleteId] = useState<Boolean[]>([]);
+  const [loadingDeleteId, setLoadingDeleteId] = useState("");
   const setPostState = useSetRecoilState(postState);
 
   const onCreateComment = async () => {
@@ -91,7 +91,7 @@ const Comments: React.FC<CommentsProps> = ({
   };
 
   const onDeleteComment = async (comment: Comment) => {
-    setLoadingDeleteId(comment.id);
+    setLoadingDeleteId(comment.id as string);
     try {
       const batch = writeBatch(firestore);
       // delete a comment document

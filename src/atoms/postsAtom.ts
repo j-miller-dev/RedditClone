@@ -28,7 +28,7 @@ interface PostState {
   postVotes: PostVote[];
 }
 
-const defaultPostState: PostState = {
+export const defaultPostState: PostState = {
   selectedPost: null,
   posts: [],
   postVotes: [],
