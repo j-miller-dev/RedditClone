@@ -44,7 +44,7 @@ type NewPostFormProps = {
   loading: boolean;
 };
 
-const formTabs: TabItem[] = [
+const formTabs: (typeof TabItem)[] = [
   {
     title: "Post",
     icon: IoDocumentText,
