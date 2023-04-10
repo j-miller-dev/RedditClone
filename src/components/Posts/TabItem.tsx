@@ -9,7 +9,7 @@ type TabItemProps = {
   setSelectedTab: (value: string) => void;
 };
 
-const TabItem: React.FC<TabItemProps> = ({
+const TabItemComponent: React.FC<TabItemProps> = ({
   item,
   selected,
   setSelectedTab,
