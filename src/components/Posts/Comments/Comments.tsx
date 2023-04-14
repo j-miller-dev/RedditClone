@@ -160,7 +160,7 @@ const Comments: React.FC<CommentsProps> = ({
           <CommentInput
             commentText={commentText}
             setCommentText={setCommentText}
-            user={user}
+            user={user ? user : undefined}
             createLoading={createLoading}
             onCreateComment={onCreateComment}
           />
