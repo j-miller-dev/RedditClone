@@ -12,12 +12,8 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-type PostPageProps = {
-  user?: User | undefined | null;
-};
-
-const PostPage: React.FC<PostPageProps> = ({ user }) => {
-  // const [user] = useAuthState(auth);
+const PostPage: React.FC = () => {
+  const [user] = useAuthState(auth);
   const { postStateValue, setPostStateValue, onDeletePost, onVote } =
     usePosts();
   const router = useRouter();
@@ -57,7 +53,9 @@ const PostPage: React.FC<PostPageProps> = ({ user }) => {
                 (item) => item.postId === postStateValue.selectedPost?.id
               )?.voteValue
             }
-            userIsCreator={user?.uid === postStateValue.selectedPost?.creatorId}
+            userIsCreator={
+              user?.uid === postStateValue.selectedPost?.creatorId ?? false
+            }
           />
         )}
         <Comments
