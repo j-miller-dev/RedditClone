@@ -27,7 +27,7 @@ import CommentInput from "./CommentInput";
 import CommentItem, { Comment } from "./CommentItem";
 
 type CommentsProps = {
-  user?: User;
+  user: User;
   selectedPost: Post | null;
   communityId: string;
 };
