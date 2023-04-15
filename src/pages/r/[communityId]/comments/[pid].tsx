@@ -54,7 +54,8 @@ const PostPage: React.FC = () => {
               )?.voteValue
             }
             userIsCreator={
-              user?.uid === postStateValue.selectedPost?.creatorId ?? false
+              (user && user.uid) ===
+              (postStateValue.selectedPost?.creatorId ?? false)
             }
           />
         )}
